@@ -1,0 +1,32 @@
+.section {
+  padding: 6rem 0;
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(250px, 1fr));
+  gap: 1.5rem;
+  padding: 2rem 0;
+}
+
+.tech-heading {
+  margin: 1rem 0 1rem 0;
+}
+
+.tech-box {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.875rem;
+  line-height: 1rem;
+  background: var(--tag-bg);
+  color: var(--primary);
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 0.2s;
+  animation-duration: 0.2s;
+  gap: 0.5rem;
+  border: 1px solid var(--border);
+  border-radius: calc(var(--radius) - 5px);
+  margin: 0.5rem 1rem 0.5rem 0;
+  padding: 0.3rem 0.5rem;
+}

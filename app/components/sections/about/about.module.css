@@ -1,0 +1,17 @@
+.section {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sectionContent {
+  max-width: 480px;
+  padding: 1rem 1rem 8rem 1rem;
+}
+
+.links {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  gap: 1rem;
+}

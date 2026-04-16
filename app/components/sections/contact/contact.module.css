@@ -1,0 +1,51 @@
+.section {
+  padding: 6rem 0;
+}
+
+.contact-desctipt {
+  font-weight: 200;
+  color: var(--muted-foreground);
+  max-width: 475px;
+  line-height: 1.4rem;
+  margin-top: 3rem;
+}
+
+.links {
+  display: flex;
+  flex-direction: column;
+  margin-top: 0.5rem;
+}
+
+.link-container {
+  display: inline-flex;
+  flex-direction: start;
+  align-items: center;
+  padding: 1rem;
+  gap: 2rem;
+}
+
+.lk-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 2.6rem;
+  height: 2.6rem;
+  border-radius: 0.4rem;
+  background-color: var(--accent);
+}
+
+.link-container:hover {
+  color: var(--primary);
+}
+
+.link-container:hover > *:not(.lk-box) {
+  color: var(--primary);
+}
+
+.link-container:hover .lk-box {
+  background-color: var(--primary);
+}
+
+.link-container:hover .lk-box svg {
+  color: var(--primary-foreground); /* icon color on hover */
+}

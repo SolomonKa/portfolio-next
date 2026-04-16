@@ -1,0 +1,7 @@
+.toggleBtn {
+  cursor: pointer;
+}
+
+.toggleBtn:hover {
+  color: var(--primary);
+}

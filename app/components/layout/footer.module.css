@@ -1,0 +1,24 @@
+.footer {
+  padding: 8rem 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.desctipt {
+  font-weight: 200;
+  color: var(--muted-foreground);
+  max-width: 475px;
+  line-height: 1.4rem;
+}
+
+.nav-link {
+  padding: 0 1rem;
+  text-decoration: none;
+  font-size: 0.875rem;
+  color: var(--muted-foreground);
+  transition: color 0.2s ease;
+}
+
+.nav-link:hover {
+  color: var(--primary);
+}
