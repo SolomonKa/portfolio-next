@@ -8,10 +8,11 @@ function About() {
     <section
       aria-labelledby="hero-heading"
       className={`container background ${style.section}`}
+      id="about"
     >
       <div className={style.sectionContent}>
         <p className="p1 text-primary-color">Bonjour, je suis</p>
-        <h1 id="hero-heading" className="title">
+        <h1 id="hero-heading" className={`title ${style.title}`}>
           Solomon Kalandadze
         </h1>
         <h2 className="secondary-title text-secondary-color">

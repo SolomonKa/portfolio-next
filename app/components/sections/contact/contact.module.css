@@ -22,6 +22,7 @@
   align-items: center;
   padding: 1rem;
   gap: 2rem;
+  max-width: fit-content;
 }
 
 .lk-box {
@@ -48,4 +49,10 @@
 
 .link-container:hover .lk-box svg {
   color: var(--primary-foreground); /* icon color on hover */
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 4rem 2rem;
+  }
 }

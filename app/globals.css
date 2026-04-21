@@ -95,8 +95,13 @@ body {
   font-family: var(--font-outfit), sans-serif;
   background-color: var(--background);
   color: var(--foreground);
-  height: 300vh;
   font-size: 16px;
+}
+
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
 }
 
 a {
@@ -115,12 +120,6 @@ a {
 
 .background-2 {
   background-color: var(--section-alt);
-}
-
-.container {
-  max-width: var(--max-width);
-  margin: 0 auto;
-  padding: 0 var(--spacing-md);
 }
 
 .title {
@@ -197,5 +196,5 @@ a {
   background-color: var(--secondary);
 }
 
-@media (max-width: 768px) {
-}
+/* @media (max-width: 768px) {
+} */

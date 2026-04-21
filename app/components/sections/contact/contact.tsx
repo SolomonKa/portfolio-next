@@ -5,11 +5,9 @@ import style from "./contact.module.css";
 
 function Contact() {
   return (
-    <section aria-labelledby="contact" className="background">
+    <section aria-labelledby="contact" className="background" id="contact">
       <div className={`container ${style.section}`}>
-        <h2 id="contact" className="subtitle">
-          Contacte
-        </h2>
+        <h2 className="subtitle">Contacte</h2>
         <p className={style["contact-desctipt"]}>
           Je suis actuellement à la recherche d’opportunités en alternance.
           N’hésitez pas à me contacter pour échanger ou discuter de

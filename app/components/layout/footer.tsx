@@ -7,7 +7,7 @@ const Footer = () => {
         <p className={style.desctipt}>
           © 2026 Solomon Kalandadze. Built with Next.Js
         </p>
-        <nav>
+        <nav aria-label="footer-navigation">
           <a className={style["nav-link"]} href="#about">
             About
           </a>

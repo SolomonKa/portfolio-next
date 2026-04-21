@@ -37,3 +37,17 @@
   max-width: 475px;
   line-height: 1.4rem;
 }
+
+@media (max-width: 768px) {
+  .section {
+    padding: 4rem 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .primary-btn-mobile {
+    display: flex;
+    justify-content: center;
+  }
+}

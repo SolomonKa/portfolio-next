@@ -3,7 +3,7 @@ import style from "./resume.module.css";
 
 function Resume() {
   return (
-    <section aria-labelledby="resume" className="background-2">
+    <section aria-labelledby="resume" className="background-2" id="cv">
       <div className={`container ${style.section}`}>
         <h3 className="subtitle">Curriculum Vitae</h3>
         <div className={style["cs-wrapper"]}>
@@ -22,7 +22,7 @@ function Resume() {
           href="/CV_Solomon-KALANdADZE.pdf"
           download="Solomon-KALANDADZE_CV"
           rel="noopener noreferrer"
-          className="btn-primary btn-primary-color"
+          className={`btn-primary btn-primary-color ${style["primary-btn-mobile"]}`}
           style={{ border: "none" }}
         >
           {<Download />}Télécharger le CV (PDF)

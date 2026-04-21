@@ -7,11 +7,28 @@
 
 .sectionContent {
   max-width: 480px;
-  padding: 1rem 1rem 8rem 1rem;
+  /* padding: 1rem 1rem 8rem 1rem; */
 }
 
 .links {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
   gap: 1rem;
+  margin-top: 2rem;
+}
+
+@media (max-width: 768px) {
+  .links {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .sectionContent {
+    max-width: 100%;
+    padding: 0.5rem;
+  }
+
+  .title {
+    font-size: 2.2rem;
+  }
 }

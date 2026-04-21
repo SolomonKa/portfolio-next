@@ -3,7 +3,7 @@ import style from "./stack.module.css";
 
 const Stack = () => {
   return (
-    <section aria-labelledby="stacks" className="background-2">
+    <section aria-labelledby="stacks" className="background-2" id="skills">
       <div className={`container ${style.section}`}>
         <h2 id="stack" className="subtitle">
           Compétences & Technologies

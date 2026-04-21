@@ -2,7 +2,7 @@ import style from "./project.module.css";
 
 const Project = () => {
   return (
-    <section aria-labelledby="Projects" className="background">
+    <section aria-labelledby="Projects" className="background" id="projects">
       <div className={`container ${style.section}`}>
         <h2 id="Project" className="subtitle">
           Projets en Vedette

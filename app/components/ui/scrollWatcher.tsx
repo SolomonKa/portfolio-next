@@ -1,5 +1,5 @@
 "use client";
-import style from "./header.module.css";
+import style from "../layout/header.module.css";
 import { useScroll } from "../providers/scrollProvider";
 
 const ScrollWatcher = () => {

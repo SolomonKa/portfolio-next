@@ -22,17 +22,19 @@ const MobileMenu = () => {
   return (
     <>
       <ThemeToggleBtn />
-      <Hamburger
-        size={24}
-        toggled={isOpen}
-        toggle={setIsOpen}
-        label={isOpen ? "Close menu" : "Open menu"}
-      />
       <nav aria-label="Mobile navigation" aria-hidden={!isOpen}>
+        <Hamburger
+          size={24}
+          toggled={isOpen}
+          toggle={setIsOpen}
+          label={isOpen ? "Close menu" : "Open menu"}
+        />
         <ul className={`${style["offscreen-menu"]} ${isOpen && style.active}`}>
           {NAV_ITEMS.map((n) => (
             <li key={n.label} className={style["nav-link"]}>
-              <a href={n.href}>{n.label}</a>
+              <a href={n.href} onClick={() => setIsOpen(false)}>
+                {n.label}
+              </a>
             </li>
           ))}
         </ul>
