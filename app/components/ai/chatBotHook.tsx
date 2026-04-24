@@ -1,73 +1,29 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useChat } from "@ai-sdk/react";
+import { useState } from "react";
 import style from "./chatBot.module.css";
 import ChatIcon from "../icons/ChatIcon";
 import ChatInner from "../icons/chatInner";
 import { useScroll } from "../providers/scrollProvider";
 
-class GenIds {
-  private nextId = 0;
-
-  constructor(startId: number) {
-    this.nextId = startId;
-  }
-
-  next() {
-    this.nextId += 1;
-    return this.nextId;
-  }
-}
-
-type MessagesType = { id: number; role: string; content: string };
-
 const ChatBot = () => {
-  const [open, setOpen] = useState<boolean>(false);
   const isScrolled = useScroll();
+  const [open, setOpen] = useState<boolean>(false);
+
   const [input, setInput] = useState("");
-  const [messages, setMessages] = useState<MessagesType[]>([]);
-  const genIdRef = useRef(new GenIds(0));
-  const bottomRef = useRef<HTMLDivElement>(null);
 
-  // biome-ignore lint/correctness/useExhaustiveDependencies: re-run on new messages to auto-scroll
-  useEffect(() => {
-    bottomRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [messages]);
+  const { messages, sendMessage, status } = useChat({
+    api: "/api/chat",
+  });
 
-  async function sendMessage() {
+  const isLoading = status === "streaming" || status === "submitted";
+
+  function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
     if (!input.trim()) return;
-
-    const newMessage = {
-      id: genIdRef.current.next(),
-      role: "user",
-      content: input,
-    };
-
-    const messageWithHistory = [...messages, newMessage];
-    setMessages(messageWithHistory);
+    sendMessage({ text: input });
     setInput("");
-
-    try {
-      const res = await fetch("/api/chat/", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(messageWithHistory),
-      });
-      if (!res.ok) {
-        throw new Error("Request is failed");
-      }
-
-      const data = await res.json();
-
-      const assistandId = genIdRef.current.next();
-
-      setMessages((prev) => [
-        ...prev,
-        { id: assistandId, role: "assistant", content: data.reply },
-      ]);
-    } catch (err) {
-      console.error(err);
-    }
   }
 
   return (
@@ -91,16 +47,21 @@ const ChatBot = () => {
                 </p>
               </div>
             </div>
+
             <div className={style["messanger-body"]}>
               {messages.map((m) =>
-                m.role !== "user" ? (
+                m.role === "assistant" ? (
                   <div key={m.id} className={style["bot-messages-wrapper"]}>
                     <ChatInner className={style["bot-avatar-icon"]} />
-
                     <div
                       className={`${style["bot-message-content"]} ${style["font-xs"]}`}
                     >
-                      <p>{m.content}</p>
+                      {/* v5: messages use parts[], not a single content string */}
+                      {m.parts.map((part, i) =>
+                        part.type === "text" ? (
+                          <p key={i}>{part.text}</p>
+                        ) : null,
+                      )}
                     </div>
                   </div>
                 ) : (
@@ -108,7 +69,11 @@ const ChatBot = () => {
                     <div
                       className={`${style["you-message-content"]} ${style["font-xs"]}`}
                     >
-                      <p>{m.content}</p>
+                      {m.parts.map((part, i) =>
+                        part.type === "text" ? (
+                          <p key={i}>{part.text}</p>
+                        ) : null,
+                      )}
                     </div>
                     <div className={style["you-avatar"]}>
                       <span>You</span>
@@ -116,16 +81,21 @@ const ChatBot = () => {
                   </div>
                 ),
               )}
-              <div ref={bottomRef} />
+
+              {isLoading && (
+                <div className={style["bot-messages-wrapper"]}>
+                  <ChatInner className={style["bot-avatar-icon"]} />
+                  <div
+                    className={`${style["bot-message-content"]} ${style["font-xs"]}`}
+                  >
+                    <p>...</p>
+                  </div>
+                </div>
+              )}
             </div>
+
             <div className={style["input-section"]}>
-              <form
-                className={style["input-form"]}
-                onSubmit={(e) => {
-                  e.preventDefault();
-                  sendMessage();
-                }}
-              >
+              <form className={style["input-form"]} onSubmit={handleSubmit}>
                 <div className={style["input-wrapper"]}>
                   <input
                     type="text"
@@ -133,8 +103,13 @@ const ChatBot = () => {
                     className={style["text-input"]}
                     placeholder="Ask question about my profile..."
                     onChange={(e) => setInput(e.target.value)}
+                    disabled={isLoading}
                   />
-                  <button type="submit" className={style["send-btn"]}>
+                  <button
+                    type="submit"
+                    disabled={isLoading}
+                    className={style["send-btn"]}
+                  >
                     Send
                   </button>
                 </div>
