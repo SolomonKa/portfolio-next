@@ -1,11 +1,11 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
-import style from "./chatBot.module.css";
+import { useEffect, useRef, useState } from "react";
 import ChatIcon from "../icons/ChatIcon";
 import ChatInner from "../icons/chatInner";
 import { useScroll } from "../providers/scrollProvider";
 import useScreenSize from "../hooks/isMobile";
+import style from "./chatBot.module.css";
 
 class GenIds {
   private nextId = 0;
