@@ -42,7 +42,7 @@ const ChatBot = () => {
       document.body.style.overflow = open ? "hidden" : "";
     }
     return () => {
-      document.body.style.overflow = "hidden";
+      document.body.style.overflow = "";
     };
   }, [isMobile, open]);
 
