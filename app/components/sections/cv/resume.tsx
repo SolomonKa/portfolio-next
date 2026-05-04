@@ -19,8 +19,8 @@ function Resume() {
           </div>
         </div>
         <a
-          href="/CV_Solomon-KALANdADZE.pdf"
-          download="Solomon-KALANDADZE_CV"
+          href="/Resume_Solomon-KALANDADZE.pdf"
+          download
           rel="noopener noreferrer"
           className={`btn-primary btn-primary-color ${style["primary-btn-mobile"]}`}
           style={{ border: "none" }}

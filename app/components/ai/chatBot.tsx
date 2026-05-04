@@ -5,6 +5,7 @@ import style from "./chatBot.module.css";
 import ChatIcon from "../icons/ChatIcon";
 import ChatInner from "../icons/chatInner";
 import { useScroll } from "../providers/scrollProvider";
+import useScreenSize from "../hooks/isMobile";
 
 class GenIds {
   private nextId = 0;
@@ -29,10 +30,21 @@ const ChatBot = () => {
   const genIdRef = useRef(new GenIds(0));
   const bottomRef = useRef<HTMLDivElement>(null);
 
+  const isMobile = useScreenSize();
+
   // biome-ignore lint/correctness/useExhaustiveDependencies: re-run on new messages to auto-scroll
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
+
+  useEffect(() => {
+    if (isMobile) {
+      document.body.style.overflow = open ? "hidden" : "";
+    }
+    return () => {
+      document.body.style.overflow = "hidden";
+    };
+  }, [isMobile, open]);
 
   async function sendMessage() {
     if (!input.trim()) return;
@@ -71,7 +83,7 @@ const ChatBot = () => {
   }
 
   return (
-    <div className={`${style["bot-container"]}`}>
+    <div className={style["bot-container"]}>
       {open ? (
         <div className={style["messanger-wrapper"]}>
           <button
@@ -87,7 +99,7 @@ const ChatBot = () => {
               <div className={style["bot-name"]}>
                 <h3 className={style["heading-title"]}>Portfolio Assistent</h3>
                 <p className={style["font-xs"]}>
-                  Ask anything about my background, skills or availability
+                  Ask anything about Solomon's profile
                 </p>
               </div>
             </div>

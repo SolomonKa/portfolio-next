@@ -25,7 +25,9 @@ function About() {
         </p>
         <nav aria-label="Liens professionnels" className={style.links}>
           <a
-            href="/cv.pdf"
+            href="/Resume_Solomon-KALANDADZE.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
             aria-label="Télécharger mon CV (PDF)"
             className="btn-primary btn-primary-color"
           >
