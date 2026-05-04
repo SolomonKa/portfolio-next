@@ -99,7 +99,8 @@ const ChatBot = () => {
               <div className={style["bot-name"]}>
                 <h3 className={style["heading-title"]}>Portfolio Assistent</h3>
                 <p className={style["font-xs"]}>
-                  Ask anything about Solomon's profile
+                  {/* Ask anything about Solomon's profile */}
+                  Posez-moi toutes vos questions concernant mon profil
                 </p>
               </div>
             </div>
@@ -143,7 +144,7 @@ const ChatBot = () => {
                     type="text"
                     value={input}
                     className={style["text-input"]}
-                    placeholder="Ask question about my profile..."
+                    placeholder="Poser une question sur mon profil..."
                     onChange={(e) => setInput(e.target.value)}
                   />
                   <button type="submit" className={style["send-btn"]}>
