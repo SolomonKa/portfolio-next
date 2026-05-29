@@ -35,7 +35,7 @@ function About() {
             CV
           </a>
           <a
-            href="https://github.com/..."
+            href="https://github.com/SolomonKa?tab=overview&from=2026-04-01&to=2026-04-30"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Profil GitHub (nouvel onglet)"
@@ -45,7 +45,7 @@ function About() {
             Github
           </a>
           <a
-            href="https://linkedin.com/in/..."
+            href="https://www.linkedin.com/in/solomon-kalandadze-95899092/"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Profil LinkedIn (nouvel onglet)"
